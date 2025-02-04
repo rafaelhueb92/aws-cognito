@@ -17,7 +17,7 @@
 
 ---
 
-<p align="center"> 🤖 Few lines describing what your bot does.
+<p align="center"> A simple Proof of concept to create an OAuth to authenticate an API Gateway
     <br> 
 </p>
 
