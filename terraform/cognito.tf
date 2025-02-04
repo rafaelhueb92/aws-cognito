@@ -13,3 +13,8 @@ resource "aws_cognito_user" "default_user" {
   username     = var.cognito_email
   password     = var.cognito_password
 }
+
+resource "aws_cognito_user_pool_domain" "this" {
+  domain          = "people-auth"
+  user_pool_id    = aws_cognito_user_pool.user_pool.id
+}

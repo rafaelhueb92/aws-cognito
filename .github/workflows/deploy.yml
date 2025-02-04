@@ -50,6 +50,7 @@ jobs:
         working-directory: ./terraform
 
       - name: Terraform Apply
+        if: env.destroy_flag != 'true'
         run: terraform apply -var="cognito_email=${{ secrets.COGNITO_EMAIL }}" -var="cognito_password=${{ secrets.COGNITO_PWD }}" -auto-approve
         working-directory: ./terraform
 
