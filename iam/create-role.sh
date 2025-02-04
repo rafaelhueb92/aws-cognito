@@ -1,6 +1,13 @@
 AWS_ACCOUNT_ID=$1
 GITHUB_REPO=$2
 
+echo "Create the OIDC Provider"
+
+aws iam create-open-id-connect-provider \
+  --url https://token.actions.githubusercontent.com \
+  --client-id-list sts.amazonaws.com \
+  --thumbprint-list 9e99a48a96b8d4ba8c387b90323e1b6a9c157c4e
+
 echo "Creating the Trust Policy for the Github Repository $2 to deploy into the AWS account ID $1"
 
 sed -e "s/AWS_ACCOUNT_ID/$AWS_ACCOUNT_ID/g" -e "s|GITHUB_REPO|$GITHUB_REPO|g" trust-policy.json > trust-policy-temp.json
@@ -17,7 +24,7 @@ echo "Putting the policy into the role"
 
 aws iam put-role-policy --role-name GitHubActionsRole \
   --policy-name GitHubActionsPolicy \
-  --policy-document file://permission-policy.json 
+  --policy-document file://permission-policy.json \
   --no-cli-pager \
   --output json
 
