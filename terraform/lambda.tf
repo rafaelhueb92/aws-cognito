@@ -1,5 +1,5 @@
 resource "aws_lambda_function" "get_all_people" {
-  function_name    = "getAllPeople"
+  function_name    = "get_all_People"
   runtime          = "nodejs18.x"
   handler          = "main.handler"
   filename         = data.archive_file.lambda_zip.output_path
