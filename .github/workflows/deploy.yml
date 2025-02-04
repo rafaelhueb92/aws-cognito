@@ -44,7 +44,7 @@ jobs:
 
       - name: Terraform Destroy
         if: env.destroy_flag == 'true'
-        run: terraform destroy -auto-approve
+        run: terraform destroy -var="cognito_email=${{ secrets.COGNITO_EMAIL }}" -var="cognito_password=${{ secrets.COGNITO_PWD }}" -auto-approve
         working-directory: ./terraform
 
       - name: Terraform Apply
