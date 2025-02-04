@@ -5,7 +5,7 @@ resource "aws_cognito_user_pool" "user_pool" {
 resource "aws_cognito_user_pool_client" "user_pool_client" {
   name         = "people-client"
   user_pool_id = aws_cognito_user_pool.user_pool.id
-  generate_secret = false
+  generate_secret = true
 }
 
 resource "aws_cognito_user" "default_user" {
