@@ -1,4 +1,4 @@
-resource "aws_lambda_function" "get_all_people" {
+resource "aws_lambda_function" "lambda_role" {
   function_name    = "getAllPeople"
   runtime          = "nodejs18.x"
   handler          = "main.handler"

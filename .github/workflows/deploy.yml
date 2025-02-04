@@ -34,15 +34,11 @@ jobs:
         run: terraform init
         working-directory: ./terraform
 
-      - name: Terraform store default Cognito Users Variables
-        run: terraform apply -var="cognito_email=${{ secrets.COGNITO_EMAIL }}" -var="cognito_password=${{ secrets.COGNITO_PWD }}"
-        working-directory: ./terraform
-
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: terraform apply -var="cognito_email=${{ secrets.COGNITO_EMAIL }}" -var="cognito_password=${{ secrets.COGNITO_PWD }}" -auto-approve
         working-directory: ./terraform
 
       - name: Destroy Terraform resources if anything goes wrong
-        run: terraform destroy -auto-approve
+        run: terraform destroy -var="cognito_email=${{ secrets.COGNITO_EMAIL }}" -var="cognito_password=${{ secrets.COGNITO_PWD }}" -auto-approve
         working-directory: ./terraform
         if: failure()  
