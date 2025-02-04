@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+env:
+  ACTIONS_STEP_DEBUG: true
+  AWS_DEBUG: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
