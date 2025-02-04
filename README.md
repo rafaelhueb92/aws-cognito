@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="images/aws-cognito-image.jpg" alt="Bot logo"></a>
+ <img width=300px height=200px src="images/aws-cognito-image.jpg" alt="cognito logo"></a>
 </p>
 
 <h3 align="center">AWS + Cognito + Api Gateway + DynamoDB</h3>
