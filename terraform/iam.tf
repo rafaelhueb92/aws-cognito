@@ -1,6 +1,6 @@
 # iam.tf
 
-resource "aws_iam_role" "lambda_role" {
+resource "aws_iam_role" "lambda_getAllPeople" {
   name               = "lambda_role_getAllPeople"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
