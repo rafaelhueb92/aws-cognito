@@ -36,4 +36,4 @@ override.tf.json
 .terraformrc
 terraform.rc
 trust-policy-temp.json
-./.DS_Store
+.DS_Store
