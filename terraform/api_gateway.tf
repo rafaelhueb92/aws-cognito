@@ -7,10 +7,6 @@ resource "aws_apigatewayv2_stage" "api_stage" {
   api_id      = aws_apigatewayv2_api.api.id
   name        = "$default"
   auto_deploy = true
-  default_route_settings {
-    authorization_type = "JWT"
-    authorizer_id      = aws_apigatewayv2_authorizer.cognito.id
-  }
 }
 
 resource "aws_apigatewayv2_authorizer" "cognito" {
