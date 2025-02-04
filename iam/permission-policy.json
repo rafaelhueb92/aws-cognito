@@ -18,7 +18,8 @@
         "apigateway:DeleteDeployment",
         "apigateway:DeleteAuthorizer",
         "apigateway:TagResource",
-        "apigateway:POST"
+        "apigateway:POST",
+        "apigateway:GET"
       ],
       "Resource": "*"
     },
@@ -36,7 +37,8 @@
         "cognito-idp:DeleteUserPool",
         "cognito-idp:DeleteUserPoolClient",
         "cognito-idp:TagResource",
-        "cognito-idp:GetUserPoolMfaConfig"
+        "cognito-idp:GetUserPoolMfaConfig",
+        "cognito-idp:AdminGetUser"
       ],
       "Resource": "*"
     },
@@ -52,7 +54,8 @@
         "lambda:TagResource",
         "lambda:CreateEventSourceMapping",
         "lambda:UpdateEventSourceMapping",
-        "lambda:DeleteEventSourceMapping"
+        "lambda:DeleteEventSourceMapping",
+        "lambda:*"
       ],
       "Resource": "*"
     },
@@ -66,7 +69,9 @@
         "iam:DeleteRole",
         "iam:ListRoles",
         "iam:GetRole",
-        "iam:TagRole"
+        "iam:TagRole",
+        "iam:ListRolePolicies",
+        "iam:*"
       ],
       "Resource": "*"
     },
