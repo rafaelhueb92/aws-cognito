@@ -17,7 +17,8 @@
         "apigateway:DeleteStage",
         "apigateway:DeleteDeployment",
         "apigateway:DeleteAuthorizer",
-        "apigateway:TagResource"
+        "apigateway:TagResource",
+        "apigateway:POST"
       ],
       "Resource": "*"
     },
@@ -34,7 +35,8 @@
         "cognito-idp:DescribeUserPoolClient",
         "cognito-idp:DeleteUserPool",
         "cognito-idp:DeleteUserPoolClient",
-        "cognito-idp:TagResource"
+        "cognito-idp:TagResource",
+        "cognito-idp:GetUserPoolMfaConfig"
       ],
       "Resource": "*"
     },
@@ -63,7 +65,8 @@
         "iam:DetachRolePolicy",
         "iam:DeleteRole",
         "iam:ListRoles",
-        "iam:GetRole"
+        "iam:GetRole",
+        "iam:TagRole"
       ],
       "Resource": "*"
     },
