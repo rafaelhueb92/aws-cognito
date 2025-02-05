@@ -42,7 +42,8 @@
         "cognito-idp:AdminGetUser",
         "cognito-idp:AdminDeleteUser",
         "cognito-idp:CreateUserPoolDomain",
-        "cognito-idp:DescribeUserPoolDomain"
+        "cognito-idp:DescribeUserPoolDomain",
+        "cognito-idp:SetUICustomization"
       ],
       "Resource": "*"
     },
