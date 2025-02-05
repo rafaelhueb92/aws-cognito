@@ -33,7 +33,7 @@ resource "aws_cognito_user_pool_client" "this" {
 }
 
 resource "aws_cognito_user_pool_ui_customization" "ui_customization" {
-  client_id = aws_cognito_user_pool.user_pool.id
+  user_pool_id = aws_cognito_user_pool.user_pool.id
   client_id    = aws_cognito_user_pool_client.user_pool_client.id
   css          = file("custom-style.css")  # Custom CSS file
 }
