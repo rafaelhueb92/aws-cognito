@@ -2,12 +2,6 @@ resource "aws_cognito_user_pool" "user_pool" {
   name = "people-user-pool"
 }
 
-resource "aws_cognito_user_pool_client" "user_pool_client" {
-  name         = "people-client"
-  user_pool_id = aws_cognito_user_pool.user_pool.id
-  generate_secret = true
-}
-
 resource "aws_cognito_user" "default_user" {
   user_pool_id = aws_cognito_user_pool.user_pool.id
   username     = var.cognito_email
@@ -22,7 +16,7 @@ resource "aws_cognito_user_pool_domain" "this" {
 resource "aws_cognito_user_pool_client" "this" {
   name                                 = "people-client"
   user_pool_id                         = aws_cognito_user_pool.user_pool.id
-  generate_secret                      = false
+  generate_secret                      = true
   explicit_auth_flows                  = ["ALLOW_REFRESH_TOKEN_AUTH", "ALLOW_USER_SRP_AUTH"]
   allowed_oauth_flows                  = ["code", "implicit"]
   allowed_oauth_scopes                 = ["openid", "email", "profile"]
@@ -34,6 +28,6 @@ resource "aws_cognito_user_pool_client" "this" {
 
 resource "aws_cognito_user_pool_ui_customization" "ui_customization" {
   user_pool_id = aws_cognito_user_pool.user_pool.id
-  client_id    = aws_cognito_user_pool_client.user_pool_client.id
+  client_id    = aws_cognito_user_pool_client.this.id
   css          = file("custom-style.css")  # Custom CSS file
 }
