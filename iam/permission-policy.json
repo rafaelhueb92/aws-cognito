@@ -40,7 +40,9 @@
         "cognito-idp:TagResource",
         "cognito-idp:GetUserPoolMfaConfig",
         "cognito-idp:AdminGetUser",
-        "cognito-idp:AdminDeleteUser"
+        "cognito-idp:AdminDeleteUser",
+        "cognito-idp:CreateUserPoolDomain",
+        "cognito-idp:DescribeUserPoolDomain"
       ],
       "Resource": "*"
     },
