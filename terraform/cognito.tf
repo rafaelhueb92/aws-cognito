@@ -32,8 +32,8 @@ resource "aws_cognito_user_pool_client" "this" {
   #logout_urls   = ["https://myfrontend.com/logout"]
 }
 
-resource "aws_cognito_ui_customization" "ui_customization" {
-  user_pool_id = aws_cognito_user_pool.my_user_pool.id
-  client_id    = aws_cognito_user_pool_client.my_app_client.id
+resource "aws_cognito_user_pool_ui_customization" "ui_customization" {
+  client_id = aws_cognito_user_pool.user_pool.id
+  client_id    = aws_cognito_user_pool_client.user_pool_client.id
   css          = file("custom-style.css")  # Custom CSS file
 }
