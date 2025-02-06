@@ -1,12 +1,17 @@
 AWS_ACCOUNT_ID=$1
 GITHUB_REPO=$2
 
+THUMBPRINT=$(openssl s_client -servername token.actions.githubusercontent.com -showcerts -connect token.actions.githubusercontent.com:443 </dev/null 2>/dev/null | \
+openssl x509 -fingerprint -noout -sha1 | awk -F'=' '{print tolower($2)}' | tr -d ':')
+
+echo "GitHub OIDC Thumbprint: $THUMBPRINT"
+
 echo "Create the OIDC Provider"
 
 aws iam create-open-id-connect-provider \
   --url https://token.actions.githubusercontent.com \
   --client-id-list sts.amazonaws.com \
-  --thumbprint-list 9e99a48a96b8d4ba8c387b90323e1b6a9c157c4e
+  --thumbprint-list $THUMBPRINT
 
 echo "Creating the Trust Policy for the Github Repository $2 to deploy into the AWS account ID $1"
 
