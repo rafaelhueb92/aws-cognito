@@ -30,6 +30,14 @@ jobs:
         with:
           terraform_version: 1.4.0
 
+      - name: Terraform Init Backend Bucket
+        run: terraform init
+        working-directory: ./terraform/backend
+
+      - name: Terraform Apply Backend
+        run: terraform apply -auto-approve
+        working-directory: ./terraform/backend
+
       - name: Terraform Init
         run: terraform init
         working-directory: ./terraform
