@@ -38,3 +38,4 @@ terraform.rc
 trust-policy-temp.json
 .DS_Store
 .terraform.lock.hcl
+backend.hcl

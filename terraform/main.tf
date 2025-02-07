@@ -11,11 +11,5 @@ provider "aws" {
 }
 
 terraform {
-  backend "s3" {
-    bucket         = "backend-tf-${data.aws_caller_identity.current.account_id}"
-    key            = "terraform/state.tfstate"    
-    region         = "us-east-1"                  
-    encrypt        = true                         
-    dynamodb_table = "terraform-locks"            
-  }
+  backend "s3" {}
 }
