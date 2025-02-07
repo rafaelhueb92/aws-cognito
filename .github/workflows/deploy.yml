@@ -19,11 +19,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       
+      - name: Set environment variables
+        run: |
+          echo "REPO_NAME=${{ github.repository }}" >> $GITHUB_ENV
+          echo "ROLE_NAME=GitHubActionsRole" >> $GITHUB_ENV
+          echo "ACCOUNT_ID=${{ secrets.AWS_ACCOUNT_ID }}" >> $GITHUB_ENV
+
+      - name: Concatenate environment variables to create IAM Role ARN
+        run: |
+          ARN="arn:aws:iam::$ACCOUNT_ID:role/$ROLE_NAME-${REPO_NAME#*/}"
+          echo "The IAM Role ARN is: $ARN"
+          echo "ROLE_ARN=$ARN" >> $GITHUB_ENV
+      
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v3
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GitHubActionsRole
-          aws-region: us-east-1
+          role-to-assume: ${{ env.ROLE_ARN }}
+          aws-region: us-east-1 
+      
+      - name: Clear AWS Credentials Cache
+        run: rm -rf ~/.aws/cli/cache
       
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
