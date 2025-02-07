@@ -12,7 +12,7 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket         = "aws-cognito-gtw-lambda-backend-tf-bucket"
+    bucket         = data.aws_ssm_parameter.bucket_name.value
     key            = "terraform/state.tfstate"    
     region         = "us-east-1"                  
     encrypt        = true                         
